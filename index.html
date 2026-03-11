@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GPS Classroom Location</title>
+</head>
+
+<body>
+
+<h2>Get Live Classroom GPS</h2>
+
+<button onclick="getLocation()">Share GPS</button>
+
+<p id="output"></p>
+
+<script>
+
+function getLocation() {
+
+navigator.geolocation.getCurrentPosition(function(position){
+
+fetch('/location', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({
+latitude: position.coords.latitude,
+longitude: position.coords.longitude
+})
+})
+.then(response => response.json())
+.then(data => {
+
+document.getElementById("output").innerHTML =
+"Latitude: " + data.latitude + "<br>Longitude: " + data.longitude;
+
+});
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

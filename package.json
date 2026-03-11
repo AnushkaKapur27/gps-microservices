@@ -1,0 +1,9 @@
+{
+  "name": "gps-microservice",
+  "version": "1.0.0",
+  "description": "Live GPS microservice",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
